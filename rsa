@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int mdc (int F, int e)
+{
+    int r;
+    r = F % e;
+    if (e == 0)
+    {
+        return F;
+    }
+    else
+    {
+        return mdc (e, F % e);
+    }
+}
+
+void preencher (int array[], int i)
+{
+    if (i <= 28)
+    {
+        if (i == 0 || i == 1)
+        {
+            array[i] = 0;
+            printf("%d ", array[i]);
+            preencher(array, i + 1);
+        }
+        else
+        {
+            array[i] = i;
+            printf("%d ", array[i]);
+            preencher(array, i + 1);
+        }
+    }
+}
+
+int main()
+{
+    int array[30];
+    preencher (array, 0);
+    
+    printf ("\n");
+    
+	int p = 137, q = 479;
+	
+	int n = p * q;
+	printf ("n = %d\n", n);
+	
+	int F = (p - 1) * (q - 1);
+	printf("F = %d * %d = %d\n", p, q, F);
+	int e = 101;
+	
+	mdc(F, e);
+	
+	printf("mdc = %d", mdc (e, F % e));
+	
+	return 0;
+}
